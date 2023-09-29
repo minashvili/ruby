@@ -20,7 +20,8 @@ def fish_catch_random()
   button = gets
   if hand_of_got() > 50
     sleep 2
-    puts "Ура вы поймали #{random_fish()}"
+    puts "Ура вы поймали #{random_fish()} "
+    puts "  ><(((('>"
   else
     sleep 2
     puts "Эх сорвалась"
@@ -28,6 +29,7 @@ def fish_catch_random()
 end
 
 fish_catch_random()
+
 
 
 
