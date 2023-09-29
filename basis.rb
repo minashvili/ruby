@@ -1,23 +1,14 @@
-#Напишите программу, которая подсказывает, выходной сегодня или нет
-# (для простоты мы не учитываем государственных праздников, итак много дней для безделья):
+# Напишите программу «Монетка»: она генерирует случайное число 0 или 1.
+# И выводит на экран «Выпал орел» для нуля или «Выпала решка» для единицы.
 
-require 'date'
-
-def functio_check
-
-  now_date = Date.today
-  if now_date.wday > 5
-    puts 'Сегодня выходной', now_date.to_s
+def random_coun()
+  value_list = [0, 1]
+  god_of_random = value_list.sample
+  if god_of_random > 0
+    puts 'Выпала решка'
   else
-    puts 'Сегодня еще не выходной', now_date.to_s
+    puts 'Выпал орел'
   end
-
 end
 
-functio_check()
-
-
-
-
-
-
+random_coun()
