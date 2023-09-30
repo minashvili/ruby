@@ -1,23 +1,20 @@
 
-#Напишите метод, который будет принимать в качестве параметра радиус (radius),
-# а возвращать в качестве результата — площадь круга с этим радиусом.
-# Программа должна спросить у пользователя в консоли пару раз радиус и вывести площади кругов на экран.
-
-
-def space_circle(x)
-  pi = Math::PI # Получаем значение пи из модуля Math
-  return pi * (x ** 2)
+def hungry?(time_of_day_in_hours)
+  if (time_of_day_in_hours > 10)
+    puts "Я голоден"
+    true
+  else (time_of_day_in_hours == 10)
+    puts "Я не голоден"
+    false
+  end
 end
 
-def quvestion()
-  puts "введите радиус круга"
-  radius = gets.to_i
-  puts space_circle(radius)
+def eat_an(what)
+  puts "Я ем #{what}\n"
 end
 
-quvestion()
-
-
+eat_an 'яблоко' if hungry?(14)
+eat_an 'яблоко' if hungry?(10)
 
 
 
