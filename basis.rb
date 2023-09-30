@@ -1,25 +1,26 @@
-#Над этой задачей нужно будет немного потрудиться, но не спешите.
-# Напишите игру "камень - ножницы - бумага". Пользователь вводит свой вариант в консоли и играет
-# против компьютера. И видит результат игры. Компьютер должен выбирать случайный вариант.
+
+#Напишите метод, который будет принимать в качестве параметра радиус (radius),
+# а возвращать в качестве результата — площадь круга с этим радиусом.
+# Программа должна спросить у пользователя в консоли пару раз радиус и вывести площади кругов на экран.
 
 
-list1 = [0, 1, 2]
-machine_choice1 = list1.sample.to_i
-
-def game_validate(machine_choice, your_choice)
-    if machine_choice == your_choice
-       puts "Ничья переброс"
-    elsif (machine_choice == 0 && your_choice == 2) ||
-          (machine_choice == 1 && your_choice == 0) ||
-          (machine_choice == 2 && your_choice == 1)
-       puts "Машина проиграла"
-    else
-       puts "Машина одержала вверх"
-    end
+def space_circle(x)
+  pi = Math::PI # Получаем значение пи из модуля Math
+  return pi * (x ** 2)
 end
 
-puts "введите вариант: 0 - камень, 1 - ножницы, 2 - бумага"
+def quvestion()
+  puts "введите радиус круга"
+  radius = gets.to_i
+  puts space_circle(radius)
+end
 
-your_choice1 = gets.to_i
-game_validate(machine_choice1, your_choice1)
+quvestion()
+
+
+
+
+
+
+
 
