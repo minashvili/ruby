@@ -1,22 +1,17 @@
 
-def hungry?(time_of_day_in_hours)
-  if (time_of_day_in_hours > 10)
-    puts "Я голоден"
-    true
-  else (time_of_day_in_hours == 10)
-    puts "Я не голоден"
-    false
+class Blurb
+  attr_accessor :content, :time, :mood
+
+  def initialize(mood, content="")
+    @time    = Time.now
+    @content = content[0..39]
+    @mood    = mood
   end
 end
 
-def eat_an(what)
-  puts "Я ем #{what}\n"
-end
+my_blurb = Blurb.new(:sick).time
 
-eat_an 'яблоко' if hungry?(14)
-eat_an 'яблоко' if hungry?(10)
-
-
+puts my_blurb
 
 
 
