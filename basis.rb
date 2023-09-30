@@ -1,16 +1,25 @@
-#Объявите в программе массив из марок автомобилей (всего около 10).
-# Выведите на экран размер этого массива (но не сам массив) и спросите
-# у пользователя одно число — номер марки автомобиля, который он хочет получить в подарок.
-# Выведите ему ту марку автомобиля, номер которой запросил пользователь.
-# А если он запросил номер, которого нет (отрицательное число, ноль или больше,
-# чем есть в массиве) — сообщите ему, что он ошибся.
+#Над этой задачей нужно будет немного потрудиться, но не спешите.
+# Напишите игру "камень - ножницы - бумага". Пользователь вводит свой вариант в консоли и играет
+# против компьютера. И видит результат игры. Компьютер должен выбирать случайный вариант.
 
-car_brands = %w[Toyota Honda Ford Chevrolet Nissan Volkswagen BMW Mercedes-Benz Audi Hyundai]
 
-puts "У нас всего #{car_brands.length} машин. Вам какую?"
-your_ansver = gets.to_i
-if your_ansver > car_brands.length || your_ansver <= 0
-  puts "Извините, машины с таким номером у нас нет :("
-else
-  puts "Поздравляем, вы получили: #{car_brands[your_ansver]}"
+list1 = [0, 1, 2]
+machine_choice1 = list1.sample.to_i
+
+def game_validate(machine_choice, your_choice)
+    if machine_choice == your_choice
+       puts "Ничья переброс"
+    elsif (machine_choice == 0 && your_choice == 2) ||
+          (machine_choice == 1 && your_choice == 0) ||
+          (machine_choice == 2 && your_choice == 1)
+       puts "Машина проиграла"
+    else
+       puts "Машина одержала вверх"
+    end
 end
+
+puts "введите вариант: 0 - камень, 1 - ножницы, 2 - бумага"
+
+your_choice1 = gets.to_i
+game_validate(machine_choice1, your_choice1)
+
