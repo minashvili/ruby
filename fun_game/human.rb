@@ -4,11 +4,20 @@
 #   Напишите программу, которая использует этот класс: создайте трёх разных людей и выведите на экран их полные имена:
 
 class Human
-  attr_accessor :first_name, :second_name
+  attr_accessor :first_name, :second_name, :age
 
-  def initialize(first_name, second_name)
-    @first_name = first_name
+  def initialize(first_name, second_name, age)
+    @first_name  = first_name
     @second_name = second_name
+    @age         = age
+  end
+
+  def is_he_old(age)
+    if age > 60
+      puts "Пожилой человек"
+    else
+      puts "Не пожилой человек"
+    end
   end
 
   def return_full_name(name = nil, name2 = nil)
@@ -21,9 +30,18 @@ class Human
 
 end
 
-list_human = %w(test1 test2 test3)
+list_human = {
+  :test1 => '59',
+  :test2 => '20',
+  :test3 => '60',
+}
 
-list_human.each do |x|
-  x = Human.new(x, "супер#{x.reverse.slice(0)}")
-  puts x.return_full_name
-end
+#
+# list_human.each do |x, y|
+#   x = Human.new(x, "супер#{x}", y)
+#   puts x.return_full_name
+#   puts x.is_he_old('6')
+# end
+
+test2 = Human.new("Георгий","Вольфрам",30)
+puts test2.is_he_old(30)

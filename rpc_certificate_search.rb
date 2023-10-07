@@ -3,19 +3,17 @@ require 'json'
 require 'openssl'
 require 'pp'
 
-# Задайте URL и данные запроса
+
 url = URI.parse('https://192.168.0.11:8443/rpc/json/')
 
-# Ваш запрос JSON-RPC
 request_data = {
   jsonrpc: '2.0',
   method: 'SearchCertificate', # тест
-  common_name: 'test.super.com', # тест
+  common_name: 'testtest.corp.com', # тест
   params: { key1: 'value1', key2: 'value2' },
   id: 1,
 }.to_json
 
-# Создайте HTTP-запрос
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = (url.scheme == 'https')
 
@@ -34,13 +32,12 @@ request.instance_variables.each do |var_name|
   puts "#{var_name}: #{var_value}"
 end
 
-puts "----------------------------------------------------------------------------------------------------------------"
-puts "-----------------------------------------------------------------------------------------------------"
-puts "----------------------------------------------------------------------------------------------------------------"
 
 # Отправьте запрос и получите ответ
 response = http.request(request)
-pp response.code, response.body
+pp response.code
+pp JSON.parse(response.body)
+puts "WvCCL/aplJy/dFc4/5eNSyEj"
 
 
 
