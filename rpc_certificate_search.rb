@@ -1,6 +1,7 @@
+
 require 'net/http'
 require 'json'
-require 'openssl'
+# require 'openssl'
 require 'pp'
 
 
@@ -9,7 +10,7 @@ url = URI.parse('https://192.168.0.11:8443/rpc/json/')
 request_data = {
   jsonrpc: '2.0',
   method: 'SearchCertificate', # тест
-  common_name: 'testtest.corp.com', # тест
+  common_name: 'acme.com', # тест
   params: { key1: 'value1', key2: 'value2' },
   id: 1,
 }.to_json
@@ -37,7 +38,7 @@ end
 response = http.request(request)
 pp response.code
 pp JSON.parse(response.body)
-puts "WvCCL/aplJy/dFc4/5eNSyEj"
+puts "WvCCL/aplJy/dFc4/5eNSyEj", "Certificate Identifier = j9XgvgAVcosfHJWYRVUYoUo3s6A"
 
 
 
