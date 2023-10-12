@@ -55,16 +55,16 @@ end
 
 # Usage example
 generate_csr(
-  'test2.corp.magneto.com',
+  'test3.corp.magneto.com',
   'ACME Corp.',
   'US',
   'California',
   'San Francisco',
   [
-    'acme.com',
-    'www.acme.com',
-    'api.acme.com',
-    'cdn.acme.com'
+    'acme3.com',
+    'www.acme3.com',
+    'api.acme3.com',
+    'cdn.acme3.com'
   ]
 )
 

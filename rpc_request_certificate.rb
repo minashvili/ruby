@@ -28,15 +28,20 @@ url = 'https://192.168.0.11:8443/rpc/enroll/'
 params = {
   'method' => 'RequestCertificate',
   'comment' => 'test for acme.com',
-  'pkcs10' => File.read('test2.corp.magneto.com.csr'),
+  'pkcs10' => File.read('test3.corp.magneto.com.csr'),
   # 'Accept' => 'text/plain', # Установите заголовок Accept на 'text/plain'
   # 'Authorization' => 'Authentication method ' + Base64.strict_encode64('bob:openxpki')
 }
 
 response = send_post_request(url, params)
 # pp response
-pp JSON.parse(response)
+# pp JSON.parse(response)
+puts response
 
+#Достаем сертификат из json парсера, потому что response - это текст а в json.parse это хэш
+open "cert_test.csr", 'w' do |io|
+  io.write JSON.parse(response)["result"]["data"]["certificate"]
+end
 
 # request['Accept'] = 'text/plain' # Установите заголовок Accept на 'text/plain'
 # request['Authorization'] = 'Basic ' + Base64.strict_encode64('username:password')
