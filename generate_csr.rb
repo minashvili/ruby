@@ -55,7 +55,7 @@ end
 
 # Usage example
 generate_csr(
-  'test.corp.magneto.com',
+  'test2.corp.magneto.com',
   'ACME Corp.',
   'US',
   'California',

@@ -2,6 +2,9 @@
 require 'net/http'
 require 'uri'
 require 'base64'
+require 'pp'
+require 'json'
+
 
 def send_post_request(url, params)
   uri = URI.parse(url)
@@ -25,14 +28,14 @@ url = 'https://192.168.0.11:8443/rpc/enroll/'
 params = {
   'method' => 'RequestCertificate',
   'comment' => 'test for acme.com',
-  'pkcs10' => File.read('test.corp.magneto.com.csr'),
+  'pkcs10' => File.read('test2.corp.magneto.com.csr'),
   # 'Accept' => 'text/plain', # Установите заголовок Accept на 'text/plain'
   # 'Authorization' => 'Authentication method ' + Base64.strict_encode64('bob:openxpki')
 }
 
 response = send_post_request(url, params)
-puts response
-
+# pp response
+pp JSON.parse(response)
 
 
 # request['Accept'] = 'text/plain' # Установите заголовок Accept на 'text/plain'
