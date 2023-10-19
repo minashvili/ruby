@@ -24,7 +24,7 @@ def send_post_request(url, params)
 end
 
 
-url = 'https://192.168.0.11:8443/rpc/enroll/'
+url = 'https://192.168.0.20:8443/rpc/enroll/'
 params = {
   'method' => 'RequestCertificate',
   'comment' => 'test for acme.com',
@@ -39,7 +39,7 @@ response = send_post_request(url, params)
 puts response
 
 #Достаем сертификат из json парсера, потому что response - это текст а в json.parse это хэш
-open "cert_test.csr", 'w' do |io|
+open "cert_test.crt", 'w' do |io|
   io.write JSON.parse(response)["result"]["data"]["certificate"]
 end
 

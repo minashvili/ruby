@@ -24,19 +24,24 @@ def generate_csr(common_name, organization, country, state_name, locality, domai
   csr.subject = subject
   csr.public_key = signing_key.public_key
 
-  # prepare SAN extension
-  san_list = domain_list.map { |domain| "DNS:#{domain}" }
-  extensions = [
-    OpenSSL::X509::ExtensionFactory.new.create_extension('subjectAltName', san_list.join(','))
-  ]
+  if domain_list.is_a?(Array) && !domain_list.empty?
+    # is_a? - это метод в Ruby, который проверяет, является ли объект экземпляром указанного класса
+    # !domain_list.empty? - это выражение, которое проверяет, что массив domain_list не пуст
+    puts "Альт неймы заданы #{domain_list}"
+    # prepare SAN extension
+    san_list = domain_list.map { |domain| "DNS:#{domain}" }
+    extensions = [
+      OpenSSL::X509::ExtensionFactory.new.create_extension('subjectAltName', san_list.join(','))
+    ]
 
-  # add SAN extension to the CSR
-  attribute_values = OpenSSL::ASN1::Set [OpenSSL::ASN1::Sequence(extensions)]
-  [
-    OpenSSL::X509::Attribute.new('extReq', attribute_values),
-    OpenSSL::X509::Attribute.new('msExtReq', attribute_values)
-  ].each do |attribute|
-    csr.add_attribute attribute
+    # add SAN extension to the CSR
+    attribute_values = OpenSSL::ASN1::Set [OpenSSL::ASN1::Sequence(extensions)]
+    [
+      OpenSSL::X509::Attribute.new('extReq', attribute_values),
+      OpenSSL::X509::Attribute.new('msExtReq', attribute_values)
+    ].each do |attribute|
+      csr.add_attribute attribute
+    end
   end
 
   # sign CSR with the signing key
@@ -60,12 +65,7 @@ generate_csr(
   'US',
   'California',
   'San Francisco',
-  [
-    'acme3.com',
-    'www.acme3.com',
-    'api.acme3.com',
-    'cdn.acme3.com'
-  ]
+  []
 )
 
 
